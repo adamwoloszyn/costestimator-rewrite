@@ -63,6 +63,7 @@ backend/db.php
 # ============================================================
 *.log
 *.xlsx
+!Requirements.xlsx
 *.sql
 *.tar.gz
 *.zip
