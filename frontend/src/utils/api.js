@@ -1,16 +1,18 @@
 // Environment-based API configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001';
-const IMAGE_SOURCE = import.meta.env.VITE_IMAGE_SOURCE || 'https://ce.integratedgenetics.com/ce';
+const API_BASE_URL  = import.meta.env.VITE_API_BASE_URL       || 'http://localhost:8001';
+// DB-dependent endpoints run on tronestaging (no local DB)
+const STAGING_BASE  = import.meta.env.VITE_STAGING_API_BASE_URL || 'https://costestimator.tronestaging.com/cost-estimator/php';
+const IMAGE_SOURCE  = import.meta.env.VITE_IMAGE_SOURCE          || 'https://ce.integratedgenetics.com/ce';
 
 const endpoints = {
-  phone: `${API_BASE_URL}/phoenix_phone_controller.php`,
-  lookup: `${API_BASE_URL}/phoenix_lookup_controller.php`,
-  estimate: `${API_BASE_URL}/cost_estimate_controller.php`,
-  tradingPartners: `${API_BASE_URL}/trading_partner_controller.php`,
-  testsAvailable: `${API_BASE_URL}/tests_controller.php`,
-  siteStatus: `${API_BASE_URL}/site_status_controller.php`,
-  bannerMessages: `${API_BASE_URL}/banner_messages_controller.php`,
-  imageSource: IMAGE_SOURCE
+  phone:           `${STAGING_BASE}/phoenix_phone_controller.php`,
+  estimate:        `${STAGING_BASE}/cost_estimate_controller.php`,
+  tradingPartners: `${STAGING_BASE}/trading_partner_controller.php`,
+  lookup:          `${API_BASE_URL}/phoenix_lookup_controller.php`,
+  testsAvailable:  `${API_BASE_URL}/tests_controller.php`,
+  siteStatus:      `${API_BASE_URL}/site_status_controller.php`,
+  bannerMessages:  `${API_BASE_URL}/banner_messages_controller.php`,
+  imageSource:     IMAGE_SOURCE
 };
 
 /**
