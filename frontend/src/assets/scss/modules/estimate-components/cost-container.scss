@@ -1,0 +1,177 @@
+.cost-container {
+    $Costblue: #231f20;
+    $Costgrey: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    *, *::after, *::before {
+        box-sizing: border-box;
+    }    
+    h2 {
+        font-size: 34px;
+        font-weight: 500!important;
+        margin: 20px 0 30px;
+        color: $Costblue;
+        padding-bottom: 0px;
+    }
+    h3 {
+        font-weight: 500!important;
+        padding-bottom: 0px;
+        color: $Costgrey;
+    }
+    h4 {
+        display: inline-block;
+        font-weight: 400!important;
+        font-size: 18px;
+        padding-bottom: 0px;
+        color: $Costgrey;
+    }
+    h5, h6 {
+        font-size: 12px!important;
+    }
+    > article {
+        border-bottom: 3px solid $Costblue;
+        padding: 1px 0;
+        header {
+            border-bottom: 3px solid $Costblue;
+            margin-bottom: 40px;
+            position: relative;
+            &.loading{
+                margin-bottom: 0px;
+            }
+            &::after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+            h4 {
+                display: inline-block;
+                width: calc(100% - 100px);
+                font-size: 24px;
+                margin: 0 0 10px;
+            }
+            .cost-back-btn {
+                color: $Costblue;
+                position: absolute;
+                right: 0;
+                bottom: 8px;
+                font-size: 16px;
+                font-weight: 500;
+                i {
+                    margin-right: 6px;
+                }
+            }
+            .cost-back-btn:hover {
+                cursor: pointer;
+            }
+            .form-note {
+                display: block;
+                position: absolute;
+                top: calc(100% + 5px);
+                left: 0;
+                font-size: 10px;
+                font-style: normal;
+                color: #aaa;
+                font-weight: 300;
+            }
+        }
+        section {
+            // margin: 40px 0;
+        }
+    }
+    .desktop-msg {
+        display: block;
+    }
+    .mobile-msg {
+        display: none;
+    } 
+    .cost-button-container-right {
+        margin: 30px 0;
+        text-align: right;
+    }
+    .cost-btn {
+        border-radius: 3px;
+        background: $Costblue;
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 16px;
+        color: #fff; 
+        transition: background 0.25s ease;
+        cursor: pointer;
+        &:hover {
+            text-decoration: none;
+            background: darken($Costblue, 8%);
+        }
+        &.deactivated {
+            opacity: 0.4;
+            cursor: not-allowed;
+            &:hover {
+                background: $Costblue;
+            }
+        }
+    }
+    h3.cost-blue-alert {
+        border: 1px solid #B4E4EF;
+        background: #D4EAF6;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 300;
+        color: #2B6584;
+        margin-top: 0px;
+    }
+    .cost-loading-container {
+        padding: 20px;
+        margin: 0 0 20px;
+        min-height: 250px;
+        img {
+            display: block;
+            width: 200px;
+            margin: 40px auto;
+        }
+    }
+    img#imgSavingFollowUp{
+        width: 80px;
+        &.hidden {
+            display: none;
+        }
+    }
+} 
+
+@media (max-width: 1196px){
+    .cost-container {
+        padding: 0 15px;
+    } 
+}
+
+@media (max-width: 600px){
+    .cost-container {
+        $Costblue: #00a7cf;
+        h2 {
+            font-size: 24px;
+            margin: 20px 0 20px;
+        }
+        > article {
+            border-bottom: 1px solid $Costblue;
+            header {
+                border-bottom: 1px solid $Costblue;
+                margin-bottom: 15px;
+                h4 {
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                }
+                .cost-back-btn {
+                    bottom: 6px;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+            }
+        }
+        .desktop-msg {
+            display: none;
+        }
+        .mobile-msg {
+            display: block;
+        }
+    } 
+}

@@ -1,0 +1,41 @@
+.env-indicator {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: monospace;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+  .env-badge {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    
+    &[data-env="local"] {
+      background: #28a745;
+    }
+    
+    &[data-env="staging"] {
+      background: #ffc107;
+      color: #000;
+    }
+    
+    &[data-env="production"],
+    &[data-env="production-legacy"] {
+      background: #dc3545;
+    }
+  }
+
+  .env-details {
+    opacity: 0.8;
+    font-size: 11px;
+  }
+}

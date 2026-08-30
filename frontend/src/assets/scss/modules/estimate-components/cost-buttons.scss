@@ -1,0 +1,91 @@
+.cost-container {
+    $Costblue: #00a7cf;
+    .cost-button-container-right {
+        margin: 30px 0;
+        text-align: right;
+    }
+    .cost-btn {
+        border-radius: 3px;
+        background: $Costblue;
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 16px;
+        color: #fff; 
+        transition: background 0.25s ease;
+        cursor: pointer;
+        &:hover {
+            text-decoration: none;
+            background: darken($Costblue, 8%);
+        }
+        &.deactivated {
+            opacity: 0.4;
+            cursor: not-allowed;
+            &:hover {
+                background: $Costblue;
+            }
+        }
+        &:disabled{
+            opacity: 0.4;
+            cursor: not-allowed;
+            &:hover {
+                background: $Costblue;
+            }
+        }
+    }
+    .cost-estimate {
+        .cost-btn-dark {
+            background: $Costblue!important;
+            border: none!important;
+            border-radius: 0px!important;
+            &.faded {
+                color: rgba(255,255,255,0.6)!important;
+                background: #A6A8AB!important;
+            }
+        }
+    }
+    .split-btn-container {
+        &::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+    .cost-btn-dark__full,
+    .cost-btn-dark {
+        border-radius: 4px;
+        display: inline-block;
+        padding: 10px 20px;
+        background: #005585;
+        color: #fff;
+        min-width: 150px;
+        float: left;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        text-align: center;
+        transition: background 0.25s ease;
+        &:hover {
+            text-decoration: none;
+            background: lighten(#005585, 8%);
+        }
+        &:last-child {
+            float: right;
+        }
+        &.faded {
+            color: rgba(255,255,255,0.6);
+        }
+    }
+    .cost-btn-dark__full {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .cost-container {
+        .cost-btn-dark {
+            min-width: 120px;
+        }
+        .cost-btn {
+            padding: 12px 20px;
+        }
+    }
+}

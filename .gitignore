@@ -1,0 +1,73 @@
+# ============================================================
+# FRONTEND (frontend/)
+# ============================================================
+
+# Dependencies
+frontend/node_modules
+
+# Build output
+frontend/dist
+frontend/dist-ssr
+
+# Logs
+frontend/logs
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# Environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+frontend/.env.development
+frontend/.env.production
+frontend/.env.production.legacy
+frontend/.env.staging
+# Keep the example:
+!frontend/.env.example
+
+# Local vite/misc
+frontend/*.local
+
+# ============================================================
+# BACKEND (backend/)
+# ============================================================
+
+# PHP dependencies
+backend/vendor
+
+# Logs
+backend/logs
+
+# Sensitive config
+backend/db.php
+
+# ============================================================
+# EDITOR & OS
+# ============================================================
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ============================================================
+# MISC
+# ============================================================
+*.log
+*.xlsx
+*.sql
+*.tar.gz
+*.zip
+pass.txt
+static_lookup_raw.json
+staging-deploy/backend/vendor/
+staging-deploy/backend/logs/
+staging-deploy/frontend/
