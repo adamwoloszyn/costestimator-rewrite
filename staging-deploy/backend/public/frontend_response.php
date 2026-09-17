@@ -188,7 +188,13 @@
 				
 				//1. Insurance = 'I do not have insurance' - message 7
 				return array("rule" => 1, "response_index" => 7, "response" => $responses[7], "data_to_evaluate" => $dataToEvaluate);
-				
+                
+			}else if(($dataToEvaluate["test_category"] == "NIPT") && ($dataToEvaluate["pregnant_with_multiples"] == true) && !$multiFetalLevelCovered){
+			
+				//2. Test = NIPT && Multifetal = Yes && Multifetal level covered by payer = No
+				//- message 5
+				return array("rule" => 2, "response_index" => 5, "response" => $responses[5], "data_to_evaluate" => $dataToEvaluate);
+						
 			}else if($dataToEvaluate["insurance_selection"] == "2"){//"I don't see my insurance"
 				
 				//3. Insurance = 'My insurance is not listed' - message 8
@@ -218,12 +224,7 @@
 				
 				//7. Any other error text returned - message 6
 				return array("rule" => 7, "response_index" => 6, "response" => $responses[6], "data_to_evaluate" => $dataToEvaluate);
-			}else if(($dataToEvaluate["test_category"] == "NIPT") && ($dataToEvaluate["pregnant_with_multiples"] == true) && !$multiFetalLevelCovered){
 			
-				//2. Test = NIPT && Multifetal = Yes && Multifetal level covered by payer = No
-				//- message 5
-				return array("rule" => 2, "response_index" => 5, "response" => $responses[5], "data_to_evaluate" => $dataToEvaluate);
-					
 			// OLD }else if ($dataToEvaluate["test_category"] == "NIPT" && $dataToEvaluate["OOP_Cost"] == 0 && ($dataToEvaluate["member_estimate_age_at_delivery"] >= 35 || $dataToEvaluate["high_risk"] == true || $dataToEvaluate["average_risk_partner"] == true)) {
 			}else if ($multiFetalLevelCovered && $dataToEvaluate["test_category"] == "NIPT" && $dataToEvaluate["OOP_Cost"] === 0 && ($dataToEvaluate["member_estimate_age_at_delivery"] >= 35 || $dataToEvaluate["high_risk"] == true || $dataToEvaluate["average_risk_partner"]["result"] == true)) {
 				/*

@@ -14,7 +14,7 @@
 	        
             
             $tests = array();
-            $testQuery = "select * from tests where is_enabled = 0 order by ordernum asc";
+            $testQuery = "select * from pep5_tests where is_enabled = 0 order by ordernum asc";
             foreach($dbh->query($testQuery) as $row) {
                 $tests[] = array(
                     "id" => $row["id"],
@@ -25,7 +25,7 @@
             }
             
             $test_descriptions = array();
-            $testDescriptionsQuery = "select * from tests where is_enabled = 1 order by ordernum asc";
+            $testDescriptionsQuery = "select * from pep5_tests where is_enabled = 1 order by ordernum asc";
             foreach($dbh->query($testDescriptionsQuery) as $row) {
                 $test_descriptions[] = array(
                     "id" => $row["id"],

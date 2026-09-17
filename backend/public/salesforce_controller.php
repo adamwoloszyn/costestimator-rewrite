@@ -24,7 +24,7 @@
 		        'client_secret' => 'SALESFORCE_CLIENT_SECRET_PLACEHOLDER',
 		        'username' => 'SALESFORCE_USERNAME_PLACEHOLDER',
 		        //'password' => 'SALESFORCE_PASSWORD_PLACEHOLDER',
-		        'password' => 'SALESFORCE_PASSWORD_PLACEHOLDER',//kh95RlDT4EA8fo3taqW0K42PmRp441l7YZwyM
+		        'password' => 'SALESFORCE_PASSWORD_PLACEHOLDER',//REDACTED
 			    'endpoint' => 'https://test.salesforce.com/services/oauth2/token'
 		    ),
 		    'qa' => array(
@@ -33,7 +33,7 @@
 		        'client_secret' => 'SALESFORCE_CLIENT_SECRET_PLACEHOLDER',
 		        'username' => 'SALESFORCE_USERNAME_PLACEHOLDER',
 		        //'password' => 'SALESFORCE_PASSWORD_PLACEHOLDER',Drt2wOT5KXE2Pdv4lLaAZk6N
-		        'password' =>   'kh95RlDT4EA89c7CIxikCKEwL7ILgE4Q9Z4q',
+		        'password' =>   'SALESFORCE_PASSWORD_PLACEHOLDER',
 			    'endpoint' => 'https://test.salesforce.com/services/oauth2/token'
 		    ),
 		    'prod' => array(

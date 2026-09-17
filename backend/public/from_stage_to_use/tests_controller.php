@@ -1,5 +1,8 @@
 <?php
 	header('Access-Control-Allow-Origin: *');  
+	header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+	header('Access-Control-Allow-Headers: X-CSRF-Token, Accept, Content-Type');
+	if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit(); }
 	header('Content-Type: application/json');
 	ini_set("error_log", "../../../logs/php_errors.log");
 	include '../../db.php';
@@ -13,7 +16,7 @@
         try {
 	        
             $test_categories = array();
-            $testCategoryQuery = "SELECT * FROM test_categories order by ordernum DESC";
+            $testCategoryQuery = "SELECT * FROM pep5_test_categories order by ordernum DESC";
             foreach($dbh->query($testCategoryQuery) as $row) {
                 $test_categories[$row["id"]] = array(
 	                "id" => $row["id"],
@@ -26,7 +29,7 @@
             }
             
             //get the pregnancy tests
-            $pregnancyTests = "select * from tests where is_enabled = 1 and test_category = 1 order by ordernum asc";
+            $pregnancyTests = "select * from pep5_tests where is_enabled = 1 and test_category = 1 order by ordernum asc";
             foreach($dbh->query($pregnancyTests) as $row) {
                  $test_categories[2]["tests"][] = array(
                     "id" => $row["id"],
@@ -43,7 +46,7 @@
             }
             
             //get the pre-pregnancy tests
-            $prePregnancyTests = "select * from tests where is_enabled = 1 and test_category = 2 order by ordernum asc";
+            $prePregnancyTests = "select * from pep5_tests where is_enabled = 1 and test_category = 2 order by ordernum asc";
             foreach($dbh->query($prePregnancyTests) as $row) {
                  $test_categories[1]["tests"][] = array(
                     "id" => $row["id"],
@@ -73,6 +76,25 @@
                 );
             }
             
+            //get the Prenatal Diagnostics and Chromosome Analysis tests (PEP-016 through PEP-020)
+            //Fetal RhD (test_category=1) already flows into $test_categories[2]["tests"] above, tagged "NIPT"
+            //These tests fold into the same Pregnancy bucket, tagged "PrenatalDx" so TestList.jsx can render
+            //them as their own section between NIPT tests and Carrier Screening (per PEP-016 item 1)
+            $prenatalDxTests = "select * from pep5_tests where is_enabled = 1 and test_category = 3 order by ordernum asc";
+            foreach($dbh->query($prenatalDxTests) as $row) {
+                 $test_categories[2]["tests"][] = array(
+                    "id" => $row["id"],
+                    "parentIndex" => isset($row['parent_index_phoenix']) ? $row['parent_index_phoenix'] : "",
+                    "displayName" => isset($row['display_name']) ? $row['display_name'] : "",
+                    "test_description" => isset($row['test_description']) ? $row['test_description'] : "",
+                    "isActive" => isset($row['is_enabled']) ? $row['is_enabled'] : "",
+                    "testCode" => isset($row['cpt_bundle']) ? $row['cpt_bundle'] : "",
+                    "categoryName" => "PrenatalDx",
+	                "testName" => isset($row['test_name']) ? $row['test_name'] : "",
+	                "headerDisplay" =>  isset($row['header_display']) ? $row['header_display'] : "",
+	                "indexInDynamicData" =>  isset($row['index_in_phoenix']) ? $row['index_in_phoenix'] : ""
+                );
+            }
             
             
             $dbh = null;
