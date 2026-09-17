@@ -1,5 +1,4 @@
 // Environment-based API configuration
-const API_BASE_URL  = import.meta.env.VITE_API_BASE_URL       || 'http://localhost:8001';
 // DB-dependent endpoints run on tronestaging (no local DB)
 const STAGING_BASE  = import.meta.env.VITE_STAGING_API_BASE_URL || 'https://costestimator.tronestaging.com/cost-estimator/php';
 const IMAGE_SOURCE  = import.meta.env.VITE_IMAGE_SOURCE          || 'https://ce.integratedgenetics.com/ce';
@@ -8,10 +7,10 @@ const endpoints = {
   phone:           `${STAGING_BASE}/phoenix_phone_controller.php`,
   estimate:        `${STAGING_BASE}/cost_estimate_controller.php`,
   tradingPartners: `${STAGING_BASE}/trading_partner_controller.php`,
-  lookup:          `${API_BASE_URL}/phoenix_lookup_controller.php`,
-  testsAvailable:  `${API_BASE_URL}/tests_controller.php`,
-  siteStatus:      `${API_BASE_URL}/site_status_controller.php`,
-  bannerMessages:  `${API_BASE_URL}/banner_messages_controller.php`,
+  lookup:          `${STAGING_BASE}/phoenix_lookup_controller.php`,
+  testsAvailable:  `${STAGING_BASE}/tests_controller.php`,
+  siteStatus:      `${STAGING_BASE}/site_status_controller.php`,
+  bannerMessages:  `${STAGING_BASE}/banner_messages_controller.php`,
   imageSource:     IMAGE_SOURCE
 };
 
@@ -241,7 +240,7 @@ export const api = {
 
 // Export endpoints config for components that need direct access
 export const config = {
-  API_BASE_URL,
+  STAGING_BASE,
   IMAGE_SOURCE,
   APP_ENV: import.meta.env.VITE_APP_ENV || 'local',
   isDevelopment: import.meta.env.DEV,

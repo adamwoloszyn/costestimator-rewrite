@@ -105,6 +105,37 @@ function TestList() {
             }
             return null;
           })}
+
+          {/* Prenatal Diagnostics and Chromosome Analysis Header (PEP-016) */}
+          {(selectedTestCategoryName === "Pregnancy" || selectedTestCategoryName === "NIPT") &&
+            state.currentTestList.some((test) => test.categoryName === "PrenatalDx") && (
+            <header><h4>Prenatal Diagnostics and Chromosome Analysis</h4></header>
+          )}
+
+          {/* Prenatal Diagnostics and Chromosome Analysis Tests */}
+          {state.currentTestList.map((test, index) => {
+            if ((selectedTestCategoryName === "Pregnancy" || selectedTestCategoryName === "NIPT") && test.categoryName === "PrenatalDx") {
+              return (
+                <a 
+                  key={index} 
+                  onClick={() => selectTest(
+                    '/personalInformation',
+                    test.parentIndex,
+                    test.indexInDynamicData,
+                    test.testCode,
+                    index,
+                    test.headerDisplay,
+                    test.categoryName,
+                    test.testName
+                  )}
+                >
+                  <h3>{test.displayName}</h3>
+                  <p>{test.test_description}</p>
+                </a>
+              );
+            }
+            return null;
+          })}
           
           {/* Carrier Screening Header */}
           {(selectedTestCategoryName === "Pregnancy" || selectedTestCategoryName === "NIPT") && (
