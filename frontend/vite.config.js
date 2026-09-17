@@ -12,6 +12,10 @@ export default defineConfig(({ mode }) => ({
   build: mode === 'production' ? {
     rollupOptions: {
       output: {
+        // IIFE wraps the whole bundle in its own function scope, so no
+        // top-level binding (e.g. the minified React reference) can be
+        // read or overwritten by other scripts on the host page (jQuery, etc.)
+        format: 'iife',
         entryFileNames: 'assets/index-DWCE_c3l.js',
         chunkFileNames: 'assets/index-DWCE_c3l.js',
         assetFileNames: (assetInfo) => {
