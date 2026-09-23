@@ -24,5 +24,13 @@ export default defineConfig(({ mode }) => ({
         }
       }
     }
+  } : mode === 'staging' ? {
+    rollupOptions: {
+      output: {
+        // Same IIFE isolation fix as production, so staging can be used
+        // to verify the jQuery/$ collision fix before touching prod
+        format: 'iife'
+      }
+    }
   } : {}
 }))
